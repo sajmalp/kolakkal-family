@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="ml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kolakkal Family</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4efe9 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(to right, #2c5530, #4a7c59);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+        }
+
+        .family-section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            color: #2c5530;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: #4a7c59;
+        }
+
+        .family-row {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .family-member {
+            display: flex;
+            flex-direction:column;
+            align-items: center;
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            width: 300px;
+        }
+
+        .family-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .photo-container {
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid #4a7c59;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .photo-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
+            color: #2c5530;
+        }
+
+        .member-relation {
+            font-size: 1rem;
+            color: #000d0e;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .member-details {
+            font-size: 0.9rem;
+            color: #110101;
+            text-align: center;
+        }
+
+        .children-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 60px;
+            margin-top: 20px;
+        }
+
+        .child {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100px;
+        }
+
+        .child-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid #72b01d;
+            margin-bottom: 8px;
+            transition: transform 0.3s;
+        }
+
+        .child-photo:hover {
+            transform: scale(1.1);
+        }
+
+        .child-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .child-name {
+            font-size: 0.85rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .family-unit {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            transition: transform 0.3s;
+        }
+
+        .family-unit:hover {
+            transform: scale(1.02);
+        }
+
+        .family-unit-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .family-unit-title {
+            font-size: 1.5rem;
+            color: #2c5530;
+            margin-bottom: 5px;
+        }
+
+        .family-unit-relation {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+        }
+
+        .family-unit-members {
+            display: flex;
+            justify-content:center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .connector {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px 0;
+            color: #4a7c59;
+        }
+
+        .connector i {
+            font-size: 1.5rem;
+        }
+
+        .more-photos-btn {
+            display: block;
+            margin: 40px auto;
+            padding: 15px 40px;
+            background: linear-gradient(to right, #2c5530, #4a7c59);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .more-photos-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background: linear-gradient(to right, #4a7c59, #2c5530);
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            margin-top: 50px;
+            background: linear-gradient(to right, #2c5530, #4a7c59);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-text {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .family-motto {
+            font-style: italic;
+            opacity: 0.9;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+            padding: 40px;
+            border-radius: 15px;
+            width: 95%;
+            max-width: 1400px;
+            max-height: 95vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #7f8c8d;
+            transition: color 0.3s;
+            z-index: 1001;
+        }
+
+        .close-btn:hover {
+            color: #e74c3c;
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .modal-title {
+            font-size: 2.5rem;
+            color: #2c5530;
+            margin-bottom: 10px;
+        }
+
+        .modal-subtitle {
+            font-size: 1.4rem;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+
+        .modal-section-title {
+            font-size: 1.8rem;
+            color: #2c5530;
+            text-align: center;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4a7c59;
+        }
+
+        /* Updated Modal Photos Layout with Multiple Sizes */
+        .modal-photos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(450px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+            width: 100%;
+        }
+
+        .modal-photo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s;
+            border-radius: 12px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-photo-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        .modal-photo {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Different photo sizes - Fixed for better display */
+        .modal-photo.small {
+            height: 250px;
+        }
+
+        .modal-photo.medium {
+            height: 300px;
+        }
+
+        .modal-photo.large {
+            height: 400px;
+        }
+
+        /* Improved image handling */
+        .modal-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s;
+            background-color: #f8f9fa;
+        }
+
+        .modal-photo-container:hover .modal-photo img {
+            transform: scale(1.05);
+        }
+
+        .photo-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c5530;
+            text-align: center;
+            padding: 15px 10px;
+            background: rgba(44, 85, 48, 0.05);
+            width: 100%;
+        }
+
+        .photo-description {
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+            padding: 0 10px 15px;
+            font-style: italic;
+        }
+
+        @media (max-width: 1200px) {
+            .modal-photos {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .family-row {
+                gap: 20px;
+            }
+            
+            .family-member {
+                width: 180px;
+            }
+            
+            .photo-container {
+                width: 120px;
+                height: 120px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.7rem;
+            }
+            
+            .modal-photos {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-photo.small {
+                height: 200px;
+            }
+            
+            .modal-photo.medium {
+                height: 250px;
+            }
+            
+            .modal-photo.large {
+                height: 300px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .family-member {
+                width: 160px;
+            }
+            
+            .photo-container {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .member-name {
+                font-size: 1rem;
+            }
+            
+            .modal-content {
+                padding: 20px;
+            }
+            
+            .modal-title {
+                font-size: 2rem;
+            }
+            
+            .modal-section-title {
+                font-size: 1.5rem;
+            }
+            
+            .photo-name {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>കോലാക്കൽ കുടുംബം</h1>
+        </header>
+
+        <!-- Parents Section -->
+        <section class="family-section">
+            <div class="family-row">
+                <div class="family-member">
+                    <div class="photo-container">
+                        <img src="ippichi.png" alt="Father">
+                    </div>
+                    <div class="member-name">മൊയ്തീൻ കുട്ടി (ബാവ)</div>
+                    <div class="member-relation">ഇപ്പിച്ചി </div>
+                </div>
+                <div class="family-member">
+                    <div class="photo-container">
+                        <img src="ithatha.png" alt="Mother">
+                    </div>
+                    <div class="member-name">ചെമ്മല ഹലീമ ബീവി</div>
+                    <div class="member-relation">ഇത്താത്ത</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Children Section -->
+        <section class="family-section">
+            <h2 class="section-title">മക്കള്‍</h2>
+            <div class="family-row">
+                <div class="family-member">
+                    <div class="photo-container">
+                        <img src="ayisha.png" alt="Ayisha">
+                    </div>
+                    <div class="member-name">ആയിഷാ ബീവി</div>
+                </div>
+                <div class="family-member">
+                    <div class="photo-container">
+                        <img src="immiyi.png" alt="Beekunchi">
+                    </div>
+                    <div class="member-name">ബീകുഞ്ഞി ബീവി</div>
+                    <div class="member-relation"></div>
+                </div>
+                <div class="family-member">
+                    <div class="photo-container">
+                        <img src="mariyam.png" alt="Mariyam">
+                    </div>
+                    <div class="member-name">മറിയം ബീവി</div>
+                </div>
+                <div class="family-member">
+                    <div class="photo-container">
+                        <img src="nasar.png" alt="Nasar">
+                    </div>
+                    <div class="member-name">അബ്‌ദുൾ നാസർ</div>
+                </div>
+                <div class="family-member">
+                    <div class="photo-container">
+                        <img src="majeed.png" alt="Majeed">
+                    </div>
+                    <div class="member-name">അബ്‌ദുൾ മജീദ്</div>
+                </div>
+                <div class="family-member">
+                    <div class="photo-container">
+                        <img src="shukoor.png" alt="Shukoor">
+                    </div>
+                    <div class="member-name">അബ്‌ദുൾ ഷുക്കൂർ</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ayisha Beevi Family -->
+        <section class="family-section">
+            <h2 class="section-title">ആയിഷാ ബീവിയുടെ കുടുംബം</h2>
+            <div class="family-unit">
+                <div class="family-unit-header">
+                    <div class="family-unit-title">ഉമ്മർ & ആയിഷാ ബീവി</div>
+                    <div class="family-unit-relation"></div>
+                </div>
+                <div class="family-unit-members">
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="ummer.png" alt="Ummer">
+                        </div>
+                        <div class="member-name">ഉമ്മർ പി</div>
+                        <div class="member-relation"></div>
+                    </div>
+                    <div class="connector">
+                        
+                    </div>
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="ayisha.png" alt="Ayisha">
+                        </div>
+                        <div class="member-name">ആയിഷാ ബീവി</div>
+                        <div class="member-relation"></div>
+                    </div>
+                </div>
+                <div class="children-container">
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="ajmal.png" alt="Ajmal">
+                        </div>
+                        <div class="child-name">അജ്‌മൽ </div>
+                    </div>
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="sajmal.png" alt="Sajmal">
+                        </div>
+                        <div class="child-name">സജ്‌മൽ </div>
+                    </div>
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="bijmal.png" alt="Bijmal">
+                        </div>
+                        <div class="child-name">ബിജ്‌മൽ</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Beekunchi Beevi Family -->
+        <section class="family-section">
+            <h2 class="section-title">ബീകുഞ്ഞി ബീവിയുടെ കുടുംബം</h2>
+            <div class="family-unit">
+                <div class="family-unit-header">
+                    <div class="family-unit-title">മുഹമ്മദ് & ബീകുഞ്ഞി ബീവി</div>
+                    <div class="family-unit-relation"></div>
+                </div>
+                <div class="family-unit-members">
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="appaa.png" alt="Muhammad">
+                        </div>
+                        <div class="member-name">മുഹമ്മദ് സി</div>
+                        <div class="member-relation">(Late)</div>
+                    </div>
+                    <div class="connector">
+                        
+                    </div>
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="immiyi.png" alt="Beekunchi">
+                        </div>
+                        <div class="member-name">ബീകുഞ്ഞി ബീവി</div>
+                        <div class="member-relation">(Late)</div>
+                    </div>
+                </div>
+                <div class="children-container">
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="sareena.png" alt="Sareena">
+                        </div>
+                        <div class="child-name">സറീന</div>
+                    </div>
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="sajid.png" alt="Yasar">
+                        </div>
+                        <div class="child-name">യാസർ</div>
+                    </div>
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="sadiq.png" alt="Sadiq">
+                        </div>
+                        <div class="child-name">സാദിഖ്</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mariyam Beevi Family -->
+        <section class="family-section">
+            <h2 class="section-title">മറിയം ബീവി കുടുംബം</h2>
+            <div class="family-unit">
+                <div class="family-unit-header">
+                    <div class="family-unit-title">അബൂബക്കർ & മറിയം ബീവി</div>
+                    <div class="family-unit-relation"></div>
+                </div>
+                <div class="family-unit-members">
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="aboo2.png" alt="Abubacker">
+                        </div>
+                        <div class="member-name">അബൂബക്കർ പി</div>
+                        <div class="member-relation"></div>
+                    </div>
+                    <div class="connector">
+                        
+                    </div>
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="bichu2.png" alt="Mariyam">
+                        </div>
+                        <div class="member-name">മറിയം ബീവി</div>
+                        <div class="member-relation"></div>
+                    </div>
+                </div>
+                <div class="children-container">
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="iqbal.png" alt="Iqbal">
+                        </div>
+                        <div class="child-name">ഇഖ്ബാൽ</div>
+                    </div>
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="ishak.png" alt="Ishak">
+                        </div>
+                        <div class="child-name">ഇസ്ഹാഖ്</div>
+                    </div>
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="irshu.png" alt="Irshad">
+                        </div>
+                        <div class="child-name">ഇർഷാദ്</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Abdul Nasar Family -->
+        <section class="family-section">
+            <h2 class="section-title">അബ്‌ദുൾ നാസറിന്‍റെ കുടുംബം</h2>
+            <div class="family-unit">
+                <div class="family-unit-header">
+                    <div class="family-unit-title">അബ്‌ദുൾ നാസർ & റസീന</div>
+                    <div class="family-unit-relation"></div>
+                </div>
+                <div class="family-unit-members">
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="nasar.png" alt="Nasar">
+                        </div>
+                        <div class="member-name">അബ്‌ദുൾ നാസർ</div>
+                        <div class="member-relation"></div>
+                    </div>
+                    <div class="connector">
+                        
+                    </div>
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="raseena.png" alt="Raseena">
+                        </div>
+                        <div class="member-name">റസീന</div>
+                        <div class="member-relation"></div>
+                    </div>
+                </div>
+                <div class="children-container">
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="lulu.png" alt="Lulu">
+                        </div>
+                        <div class="child-name">ലുലു</div>
+                    </div>
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="lesin.png" alt="Lesin">
+                        </div>
+                        <div class="child-name">ലെസിൻ</div>
+                    </div>
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="laya.png" alt="Laya">
+                        </div>
+                        <div class="child-name">ലയ</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Abdul Majeed Family -->
+        <section class="family-section">
+            <h2 class="section-title">അബ്‌ദുൾ മജീദിന്‍റെ കുടുംബം</h2>
+            <div class="family-unit">
+                <div class="family-unit-header">
+                    <div class="family-unit-title">അബ്‌ദുൾ മജീദ് & ബുഷ്റ</div>
+                    <div class="family-unit-relation"></div>
+                </div>
+                <div class="family-unit-members">
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="majeed.png" alt="Majeed">
+                        </div>
+                        <div class="member-name">അബ്‌ദുൾ മജീദ്</div>
+                        <div class="member-relation"></div>
+                    </div>
+                    <div class="connector">
+                        
+                    </div>
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="bushra.png" alt="Bushra">
+                        </div>
+                        <div class="member-name">ബുഷ്റ</div>
+                        <div class="member-relation"></div>
+                    </div>
+                </div>
+                <div class="children-container">
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="henna.png" alt="Henna">
+                        </div>
+                        <div class="child-name">ഹെന്ന</div>
+                    </div>
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="haneen.png" alt="Haneen">
+                        </div>
+                        <div class="child-name">ഹനീൻ</div>
+                    </div>
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="harshal.png" alt="Harshal">
+                        </div>
+                        <div class="child-name">ഹർഷൽ</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Abdul Shukoor Family -->
+        <section class="family-section">
+            <h2 class="section-title">അബ്‌ദുൾ ഷുക്കൂറിന്‍റെ കുടുംബം</h2>
+            <div class="family-unit">
+                <div class="family-unit-header">
+                    <div class="family-unit-title">അബ്‌ദുൾ ഷുക്കൂർ & ആബിദ</div>
+                    <div class="family-unit-relation"></div>
+                </div>
+                <div class="family-unit-members">
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="shukoor.png" alt="Shukoor">
+                        </div>
+                        <div class="member-name">അബ്‌ദുൾ ഷുക്കൂർ</div>
+                        <div class="member-relation"></div>
+                    </div>
+                    <div class="connector">
+                        
+                    </div>
+                    <div class="family-member">
+                        <div class="photo-container">
+                            <img src="abida.png" alt="Abida">
+                        </div>
+                        <div class="member-name">ആബിദ</div>
+                        <div class="member-relation"></div>
+                    </div>
+                </div>
+                <div class="children-container">
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="hasna.png" alt="Hasna">
+                        </div>
+                        <div class="child-name">ഹസ്ന</div>
+                    </div>
+                    <div class="child">
+                        <div class="child-photo">
+                            <img src="hamdha.png" alt="Hamda">
+                        </div>
+                        <div class="child-name">ഹംദ</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Single More Photos Button -->
+        <div style="text-align: center;">
+            <button class="more-photos-btn" id="mainMorePhotosBtn">കൂടുതൽ ഫോട്ടോകൾ കാണുക</button>
+        </div>
+
+        <footer>
+            <p class="footer-text">Created by Sajmal Anakkayam &copy; 2025</p>
+        </footer>
+    </div>
+
+    <!-- Modal for displaying additional photos -->
+    <div class="modal" id="photoModal">
+        <div class="modal-content">
+            <span class="close-btn" id="closeModal">&times;</span>
+            <div class="modal-header">
+                <h2 class="modal-title" id="modalTitle">കോലാക്കൽ കുടുംബ ഫോട്ടോ ഗാലറി</h2>
+                <p class="modal-subtitle" id="modalSubtitle">നാലു തലമുറകളിലൂടെ </p>
+            </div>
+            
+            <!-- Family Generations Section -->
+            <h3 class="modal-section-title"></h3>
+            <div class="modal-photos" id="generationPhotos">
+                <!-- Generation photos will be inserted here by JavaScript -->
+            </div>
+            
+            <!-- Family Events Section -->
+            <h3 class="modal-section-title">പേരകുട്ടികളുടെ കുടുംബങ്ങള്‍</h3>
+            <div class="modal-photos" id="eventPhotos">
+                <!-- Event photos will be inserted here by JavaScript -->
+            </div>
+            
+            <!-- Special Moments Section -->
+            <h3 class="modal-section-title"></h3>
+            <div class="modal-photos" id="specialPhotos">
+                <!-- Special moment photos will be inserted here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Family photo data with multiple sizes
+        const familyPhotos = {
+            generations: [
+                { 
+                    src: "ippichi.png", 
+                    name: "മൊയ്തീൻ കുട്ടി (ഇപ്പിച്ചി)",
+                    size: "medium"
+                },
+                
+                { 
+                    src: "ithatha9.jpg", 
+                    name: "ഇമ്മ",
+                    size: "medium"
+                },
+                { 
+                    src: "ippichi6.jpg", 
+                    name: "ഇത്താത്ത",
+                    size: "medium"
+                },
+                { 
+                    src: "ithatha5.jpg", 
+                    
+                    size: "medium"
+                },
+                { 
+                    src: "ayisha3.jpg", 
+                    
+                    size: "medium"
+                },
+                { 
+                    src: "immiyi7.jpg", 
+                   
+                    size: "medium"
+                },
+                { 
+                    src: "bichummu3.png", 
+                    
+                    size: "medium"
+                },
+                { 
+                    src: "nasar4.png", 
+                    
+                    size: "medium"
+                },
+                { 
+                    src: "majeed4.png", 
+                    
+                    size: "medium"
+                },
+                { 
+                    src: "shukoor5.png", 
+                    
+                    size: "medium"
+                },
+                { 
+                    src: "famil1.jpg", 
+                    
+                    size: "medium"
+                },
+                { 
+                    src: "famil2.jpg", 
+                    
+                    size: "medium"
+                },
+            ],
+            events: [
+                { 
+                    src: "saji4.jpg", 
+                    size: "medium"
+                },
+                { 
+                    src: "naji1.png", 
+
+                    size: "medium"
+                },
+                { 
+                    src: "saji1.jpg", 
+                    size: "medium"
+                },
+                { 
+                    src: "sajid4.jpg", 
+                    size: "medium"
+                },
+                { 
+                    src: "iqbal1.jpeg", 
+                    size: "medium"
+                },
+                { 
+                    src: "ayisha9.jpg",  
+                    size: "medium"
+                },
+                { 
+                    src: "ishak4.jpeg", 
+                    size: "medium"
+                },
+                { 
+                    src: "lulu4.jpg", 
+                    size: "medium"
+                },
+                { 
+                    src: "majeed8.jpg", 
+                    size: "medium"
+                },
+                { 
+                    src: "shukoor8.jpg", 
+                    size: "medium"
+                },
+                { 
+                    src: "ishak5.jpg", 
+                    
+                    size: "medium"
+                },
+                { 
+                    src: "lulu3.jpg", 
+                   
+                    size: "medium"
+                },
+                { 
+                    src: "sa1.jpeg", 
+                    
+                    size: "large"
+                },
+                
+            ],
+            special: [
+                
+            ]
+        };
+
+        // Modal functionality
+        const modal = document.getElementById('photoModal');
+        const closeModal = document.getElementById('closeModal');
+        const mainMorePhotosBtn = document.getElementById('mainMorePhotosBtn');
+
+        // Function to open modal and load photos
+        function openModal() {
+            modal.style.display = 'flex';
+            loadPhotos();
+        }
+
+        // Function to close modal
+        function closeModalFunc() {
+            modal.style.display = 'none';
+        }
+
+        // Function to load photos into the modal
+        function loadPhotos() {
+            const generationContainer = document.getElementById('generationPhotos');
+            const eventContainer = document.getElementById('eventPhotos');
+            const specialContainer = document.getElementById('specialPhotos');
+            
+            // Clear existing content
+            generationContainer.innerHTML = '';
+            eventContainer.innerHTML = '';
+            specialContainer.innerHTML = '';
+            
+            // Load generation photos
+            familyPhotos.generations.forEach(photo => {
+                const photoElement = createPhotoElement(photo);
+                generationContainer.appendChild(photoElement);
+            });
+            
+            // Load event photos
+            familyPhotos.events.forEach(photo => {
+                const photoElement = createPhotoElement(photo);
+                eventContainer.appendChild(photoElement);
+            });
+            
+            // Load special photos
+            familyPhotos.special.forEach(photo => {
+                const photoElement = createPhotoElement(photo);
+                specialContainer.appendChild(photoElement);
+            });
+        }
+
+        // Function to create a photo element with proper sizing
+        function createPhotoElement(photo) {
+            const container = document.createElement('div');
+            container.className = 'modal-photo-container';
+            
+            const photoDiv = document.createElement('div');
+            photoDiv.className = `modal-photo ${photo.size}`;
+            
+            const img = document.createElement('img');
+            img.src = photo.src;
+            img.alt = photo.name;
+            img.loading = 'lazy';
+            
+            // Add error handling for images
+            img.onerror = function() {
+                this.src = 'placeholder.jpg'; // Fallback image
+            };
+            
+            photoDiv.appendChild(img);
+            
+            const nameDiv = document.createElement('div');
+            nameDiv.className = 'photo-name';
+            nameDiv.textContent = photo.name;
+            
+            container.appendChild(photoDiv);
+            container.appendChild(nameDiv);
+            
+            return container;
+        }
+
+        // Event listeners
+        mainMorePhotosBtn.addEventListener('click', openModal);
+        closeModal.addEventListener('click', closeModalFunc);
+
+        // Close modal when clicking outside the content
+        window.addEventListener('click', function(event) {
+            if (event.target === modal) {
+                closeModalFunc();
+            }
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModalFunc();
+            }
+        });
+    </script>
+</body>
+</html>
